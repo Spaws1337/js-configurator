@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+        </nav>
+    </header>
+    <div class="title">
+        <h1 class="roboto-bold">Конфигуратор отчетов ИВК</h1>
+    </div>
+    <form>
+            
+            <input type="file" id="fileInput" accept=".json">
+        <div class="configurator__button--white">
+            <button id="loadButton"  class="roboto-medium">Загрузить данные</button>
+        </div>
+        <div>
+            <label for="ip_address_osn" class="roboto-medium">Введите IP-адрес основного ИВК:</label>
+            <input class="roboto-medium" type="text" id="ip_address_osn" name="ip_address_osn" required
+                   pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="ip_address_rez" class="roboto-medium">Введите IP-адрес резервного ИВК:</label>
+            <input class="roboto-medium" type="text" id="ip_address_rez" name="ip_address_rez" required
+                   pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="ip_address_rsu" id="ip_address_rsu_text" class="roboto-medium">Введите IP-адрес ИВК РСУ:</label>
+            <input class="roboto-medium" type="text" id="ip_address_rsu" name="ip_address_rsu" required
+                   pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+            <span class="validity"></span>
+        </div>
+    </form> 
+    <div class="configurator">   
+        <div class="configurator__header--rsu">
+            <div class="custom-checkbox">
+                <input type="checkbox" id="ivk_rsu_chekbox" name="ivk_rsu_chekbox" />
+                <label for="ivk_rsu_chekbox">
+                    <h2 class="roboto-medium">Наличие РСУ</h2>
+                    <span class="checkbox-icon"></span>
+                </label>
+            </div>
+        </div>       
+        <div class="configurator__header">
+            <div class="custom-checkbox">
+                <input type="checkbox" id="ivk_osu_arrow" name="ivk_osu_arrow" checked />
+                <label for="ivk_osu_arrow">
+                    <h2 class="roboto-medium">ИВК ОСУ</h2>
+                    <span class="arrow-icon"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="configurator__item roboto-regular">
+
+
+
+    <div class="configurator__button">
+        <button id="saveButton" class="roboto-medium">Сохранить</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

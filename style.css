@@ -1,0 +1,225 @@
+body {
+    background-color: #f5f5f5;
+}
+
+form {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #10141A;
+}
+
+form label {
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    margin-left: 10px;
+}
+
+/* Стили для заголовка формы */
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF; 
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #b3b3b3;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+form .error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+header {
+    height: 32px;
+    width: 100%;
+    background-color: #10141A;
+    margin-bottom: 24px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #10141A;
+}
+
+h2 {
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+h3 {
+    margin-right: 12px;
+    margin-left: 24px;
+    font-size: 12px;
+    color: #10141A;
+}
+
+.title {
+    margin: 0 auto 12px;
+    text-align: center;
+}
+
+.configurator {
+    margin: 0 auto;
+    border-radius: 15px;
+    margin-bottom: 24px;
+    width: 70%;
+    background-color: #FFFFFF;
+}
+
+.configurator__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+    height: 32px;
+    background-color: #10141A;
+    flex-wrap: wrap;
+}
+
+.configurator__header--rsu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    height: 32px;
+    background-color: #10141A;
+    flex-wrap: wrap;
+}
+
+.configurator__item {
+    padding: 24px 24px;
+}
+
+.configurator__item h2 {
+    color: #10141A;
+}
+
+.configurator__item .checkbox-icon,
+.configurator__item .arrow-icon{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.reports__item, .reportsunfinished__item, .pasports__item,
+.acts__item, .journals__item,
+.poverkaMi3287__item, .KMHPPpoLabSi__item,
+.KMHPRpoPU__item, .KMHPVl__item,
+.KMHPVz__item, .KMHRabPPpoRez__item,
+.KMHRabPPpoMI__item, .PoverkaPPpoMI__item,
+.KMHPRpoPR__item, .KMHMPRpoMPR__item,
+.PoverkaMI3380__item, .PoverkaMI3265PRpoPU__item,
+.PoverkaMI3265UPRpoPU__item, .PoverkaMI3265UPRpoPUiPR__item,
+.KMHMi3265PRpoPU__item, .KMHMi3265PRRSUpoPR__item,
+.PoverkaMI3312MPRpoPU__item,
+.PoverkaMI3312UPRpoPU__item,
+.KMHMi3312UPRpoPU__item,
+.KMHMi3312PRRSUpoPR__item,
+.PoverkaMI1974__item,
+.PoverkaMI3151__item,
+.KMHRabMPRpoPU__item,
+.PoverkaMI3288__item,
+.KMHMi3288__item,
+.PoverkaMI3272__item,
+.KMHMi3272__item,
+.PoverkaMI3189__item,
+.PoverkaMI3267__item,
+.PoverkaMI3266__item{
+    margin-bottom: 12px;
+}
+
+.reports__header, .reportsunfinished__header, .pasports__header,
+.acts__header, .journals__header,
+.poverkaMi3287__header, .KMHPPpoLabSi__header,
+.KMHPRpoPU__header, .KMHPVl__header,
+.KMHPVz__header, .KMHRabPPpoRez__header,
+.KMHRabPPpoMI__header, .PoverkaPPpoMI__header,
+.KMHPRpoPR__header, .KMHMPRpoMPR__header,
+.PoverkaMI3380__header, .PoverkaMI3265PRpoPU__header,
+.PoverkaMI3265UPRpoPU__header, .PoverkaMI3265UPRpoPUiPR__header,
+.KMHMi3265PRpoPU__header, .KMHMi3265PRRSUpoPR__header,
+.PoverkaMI3312MPRpoPU__header,
+.PoverkaMI3312UPRpoPU__header,
+.KMHMi3312UPRpoPU__header,
+.KMHMi3312PRRSUpoPR__header,
+.PoverkaMI1974__header,
+.PoverkaMI3151__header,
+.KMHRabMPRpoPU__header,
+.PoverkaMI3288__header,
+.KMHMi3288__header,
+.PoverkaMI3272__header,
+.KMHMi3272__header,
+.PoverkaMI3189__header,
+.PoverkaMI3267__header,
+.PoverkaMI3266__header{
+    display: flex;
+    margin-bottom: 6px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+.configurator__button{
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 24px;
+    width: 150px;
+    height: 40px;
+    background-color: #10141A;
+    text-align: center;
+    border-radius: 15px;
+}
+
+
+.configurator__button--white{
+    color: #10141A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 24px;
+    width: 150px;
+    height: 40px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 15px;
+}
+
+
+.checkbox-icon,
+.arrow-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('checkboxblank.svg');
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + label .checkbox-icon {
+    background-image: url('checkbox.svg');
+}
+
+.arrow-icon {
+    background-image: url('arrow90.svg');
+}
+
+input[type="checkbox"]:checked + label .arrow-icon {
+    background-image: url('arrow.svg');
+}
