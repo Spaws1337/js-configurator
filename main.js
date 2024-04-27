@@ -1,5 +1,6 @@
 const fileInput = document.getElementById('fileInput');
 const jsonData = { data: null };
+const saveButton = document.getElementById('saveButton');
 import translit from "./translit.js";
 
 fileInput.addEventListener('change', (event) => {
@@ -68,15 +69,53 @@ function generatePage() {
           </div>
         `;
         addDocument.innerHTML += docHtml;
-
-        const checkBoxDocInputs = document.querySelectorAll('input[type="checkbox"][id^="checkBox"]');
-        checkBoxDocInputs.forEach(input => {
-          input.addEventListener('change', () => {
-            console.log(`Чекбокс ${input.id} изменился на ${input.checked}`);
-            // Здесь можно добавить дополнительную логику при изменении состояния чекбокса
-          });
-        });
       });
     }
   }
 }
+
+// Function to update the JSON data based on the checkboxes
+function updateJSONData() {
+  if (jsonData.data && jsonData.data.Devices && jsonData.data.Devices.length > 0) {
+    const device = jsonData.data.Devices[0];
+    if (device.Docs) {
+      device.Docs.forEach(doc => {
+        const checkbox = document.getElementById(`checkBox_${translit(doc.Name)}`);
+        if (checkbox) {
+          doc.Use = checkbox.checked;
+        }
+
+        if (doc.TemplateDocs) {
+          updateTemplateDocs(doc.TemplateDocs, translit(doc.Name));
+        }
+      });
+    }
+  }
+}
+
+// Helper function to update TemplateDocs
+function updateTemplateDocs(templateDocs, parentName) {
+  templateDocs.forEach(doc => {
+    const checkbox = document.getElementById(`checkBoxDocs_${parentName}_${translit(doc.Name)}`);
+    if (checkbox) {
+      doc.Use = checkbox.checked;
+    }
+    if (doc.TemplateDocs) {
+      updateTemplateDocs(doc.TemplateDocs, `${parentName}${translit(doc.Name)}`);
+    }
+  });
+}
+
+// Function to trigger the download of the updated JSON file
+function downloadUpdatedJSON() {
+  updateJSONData();
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData));
+  const downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", "updated_data.json");
+  document.body.appendChild(downloadAnchorNode);
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+}
+
+saveButton.addEventListener('click', downloadUpdatedJSON);
