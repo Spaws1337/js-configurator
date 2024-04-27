@@ -21,10 +21,11 @@
     </div>
     <form>
             
-            <input type="file" id="fileInput" accept=".json">
-        <div class="configurator__button--white">
-            <button id="loadButton"  class="roboto-medium">Загрузить данные</button>
-        </div>
+        <div class="file__container">
+            <input class="file__button" type="file" id="fileInput" accept=".json">
+            <label for="fileInput" class="file__label roboto-medium">Выбрать файл</label>
+        </div>   
+
         <div>
             <label for="ip_address_osn" class="roboto-medium">Введите IP-адрес основного ИВК:</label>
             <input class="roboto-medium" type="text" id="ip_address_osn" name="ip_address_osn" required
@@ -65,12 +66,15 @@
         </div>
 
         <div class="configurator__item roboto-regular">
+            
+        </div>
 
 
 
     <div class="configurator__button">
         <button id="saveButton" class="roboto-medium">Сохранить</button>
     </div>
-    <script src="main.js"></script>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>

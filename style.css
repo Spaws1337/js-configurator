@@ -110,59 +110,12 @@ h3 {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
-.reports__item, .reportsunfinished__item, .pasports__item,
-.acts__item, .journals__item,
-.poverkaMi3287__item, .KMHPPpoLabSi__item,
-.KMHPRpoPU__item, .KMHPVl__item,
-.KMHPVz__item, .KMHRabPPpoRez__item,
-.KMHRabPPpoMI__item, .PoverkaPPpoMI__item,
-.KMHPRpoPR__item, .KMHMPRpoMPR__item,
-.PoverkaMI3380__item, .PoverkaMI3265PRpoPU__item,
-.PoverkaMI3265UPRpoPU__item, .PoverkaMI3265UPRpoPUiPR__item,
-.KMHMi3265PRpoPU__item, .KMHMi3265PRRSUpoPR__item,
-.PoverkaMI3312MPRpoPU__item,
-.PoverkaMI3312UPRpoPU__item,
-.KMHMi3312UPRpoPU__item,
-.KMHMi3312PRRSUpoPR__item,
-.PoverkaMI1974__item,
-.PoverkaMI3151__item,
-.KMHRabMPRpoPU__item,
-.PoverkaMI3288__item,
-.KMHMi3288__item,
-.PoverkaMI3272__item,
-.KMHMi3272__item,
-.PoverkaMI3189__item,
-.PoverkaMI3267__item,
-.PoverkaMI3266__item{
+div[class*="item__props_"] {
     margin-bottom: 12px;
-}
+  }
 
-.reports__header, .reportsunfinished__header, .pasports__header,
-.acts__header, .journals__header,
-.poverkaMi3287__header, .KMHPPpoLabSi__header,
-.KMHPRpoPU__header, .KMHPVl__header,
-.KMHPVz__header, .KMHRabPPpoRez__header,
-.KMHRabPPpoMI__header, .PoverkaPPpoMI__header,
-.KMHPRpoPR__header, .KMHMPRpoMPR__header,
-.PoverkaMI3380__header, .PoverkaMI3265PRpoPU__header,
-.PoverkaMI3265UPRpoPU__header, .PoverkaMI3265UPRpoPUiPR__header,
-.KMHMi3265PRpoPU__header, .KMHMi3265PRRSUpoPR__header,
-.PoverkaMI3312MPRpoPU__header,
-.PoverkaMI3312UPRpoPU__header,
-.KMHMi3312UPRpoPU__header,
-.KMHMi3312PRRSUpoPR__header,
-.PoverkaMI1974__header,
-.PoverkaMI3151__header,
-.KMHRabMPRpoPU__header,
-.PoverkaMI3288__header,
-.KMHMi3288__header,
-.PoverkaMI3272__header,
-.KMHMi3272__header,
-.PoverkaMI3189__header,
-.PoverkaMI3267__header,
-.PoverkaMI3266__header{
+.custom-checkbox {
     display: flex;
-    margin-bottom: 6px;
 }
 
 label {
@@ -184,7 +137,6 @@ label {
     border-radius: 15px;
 }
 
-
 .configurator__button--white{
     color: #10141A;
     display: flex;
@@ -198,6 +150,43 @@ label {
     text-align: center;
     border-radius: 15px;
 }
+
+
+.file__container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Центрирует элементы по горизонтали */
+    align-items: center; /* Центрирует элементы по вертикали */
+    width: 150px;
+    height: 40px;
+    margin: 0 auto 24px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    cursor: pointer; 
+}
+
+.file__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file__label {
+    color: #10141A;
+    position: relative;
+    z-index: 1; 
+    text-align: center; /* Добавлено для центрирования текста */
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
 
 
 .checkbox-icon,
