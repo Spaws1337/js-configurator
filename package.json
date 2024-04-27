@@ -1,11 +1,23 @@
 {
-  "name": "js-configurator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "ReportsConfigurator",
+  "version": "2.0.0",
+  "description": "Конфигуратор отчетов",
   "author": "Spaws",
-  "license": "ISC"
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^13.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "productName": "Reports Configurator",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "portable"
+    }
+  }
 }

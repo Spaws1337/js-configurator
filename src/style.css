@@ -1,0 +1,236 @@
+body {
+    background-color: #f5f5f5;
+}
+
+form {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #10141A;
+}
+
+form label {
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    margin-left: 10px;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF; 
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #b3b3b3;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+form .error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+header {
+    height: 32px;
+    width: 100%;
+    background-color: #10141A;
+    margin-bottom: 24px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #10141A;
+}
+
+h2 {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+h3 {
+    margin-right: 12px;
+    margin-left: 24px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #10141A;
+}
+
+.file__uploaded {
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 24px;
+    width: 240px;
+    height: 40px;
+    background-color: #008a00;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+.file__uploaded h2 {
+    padding: 10px;
+    margin: 0;
+}
+
+.title {
+    margin: 0 auto 12px;
+    text-align: center;
+}
+
+.configurator {
+    margin: 0 auto;
+    border-radius: 15px;
+    margin-bottom: 24px;
+    width: 70%;
+    background-color: #FFFFFF;
+}
+
+.configurator__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+    height: 32px;
+    background-color: #10141A;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.configurator__header--rsu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    height: 32px;
+    background-color: #10141A;
+    flex-wrap: wrap;
+}
+
+.configurator__item {
+    padding: 24px 24px;
+}
+
+.configurator__item h2 {
+    color: #10141A;
+}
+
+.configurator__item .checkbox-icon,
+.configurator__item .arrow-icon{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+div[class*="item__props_"] {
+    margin-bottom: 12px;
+  }
+
+.custom-checkbox {
+    display: flex;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+.configurator__button{
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 24px;
+    width: 150px;
+    height: 40px;
+    background-color: #10141A;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.configurator__button--white{
+    color: #10141A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 24px;
+    width: 150px;
+    height: 40px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 15px;
+}
+
+
+.file__container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 150px;
+    height: 40px;
+    margin: 0 auto 24px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    cursor: pointer; 
+}
+
+.file__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file__label {
+    color: #10141A;
+    position: relative;
+    z-index: 1; 
+    text-align: center; 
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+
+
+.checkbox-icon,
+.arrow-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('checkboxblank.svg');
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + label .checkbox-icon {
+    background-image: url('checkbox.svg');
+}
+
+.arrow-icon {
+    background-image: url('arrow90.svg');
+}
+
+input[type="checkbox"]:checked + label .arrow-icon {
+    background-image: url('arrow.svg');
+}
