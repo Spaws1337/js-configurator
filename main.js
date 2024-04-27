@@ -30,7 +30,7 @@ function generatePage() {
               if (doc.Name) {
                 templateDocsHTML += `
                   <div class="custom-checkbox">
-                    <input type="checkbox" id="checkBoxDocs_${translit(parentName)}_${translit(doc.Name)}" name="${translit(doc.Name)}" />
+                    <input type="checkbox" id="checkBoxDocs_${translit(parentName)}_${translit(doc.Name)}" name="${translit(doc.Name)}" ${doc.Use ? 'checked' : ''}/>
                     <label for="checkBoxDocs_${translit(parentName)}_${translit(doc.Name)}">
                       <h3 title="${doc.Description}">${doc.Name}</h3>
                       <span class="checkbox-icon"></span>
@@ -56,7 +56,7 @@ function generatePage() {
                 <span class="arrow-icon"></span>
               </label>
               <div class="custom-checkbox">
-                <input type="checkbox" id="checkBox_${translit(doc.Name)}" name="checkBox_${translit(doc.Name)}" />
+                <input type="checkbox" id="checkBox_${translit(doc.Name)}" name="checkBox_${translit(doc.Name)}" ${doc.Use ? 'checked' : ''}/>
                 <label for="checkBox_${translit(doc.Name)}">
                   <span class="checkbox-icon"></span>
                 </label>
