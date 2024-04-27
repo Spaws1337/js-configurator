@@ -9,6 +9,14 @@ function toggleRsuInput() {
     rsuInputContainer.style.display = rsuCheckbox.checked ? 'block' : 'none';
 }
 
+function addSaveButtonEventListener() {
+  document.getElementById('saveButton').addEventListener('click', function() {
+      updateIPAddresses();
+      downloadUpdatedJSON();
+  });
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
     rsuCheckbox.addEventListener('change', toggleRsuInput);
     toggleRsuInput();
@@ -34,6 +42,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function increaseLastOctet(ip) {
+  let parts = ip.split('.');
+  let lastOctet = parseInt(parts[3]) + 100;
+  parts[3] = lastOctet.toString();
+  return parts.join('.');
+}
+
 function generatePage() {
   const devices = jsonData.data.Devices;
   devices.forEach((device, deviceIndex) => {
@@ -46,38 +61,6 @@ function generatePage() {
           document.getElementById('ip_address_rsu').value = device.DBConnectionStrings[0].Server;
           toggleRsuInput(); 
       }
-
-      function increaseLastOctet(ip) {
-        let parts = ip.split('.');
-        let lastOctet = parseInt(parts[3]) + 100;
-        parts[3] = lastOctet.toString();
-        return parts.join('.');
-    }
-
-      function updateIPAddresses() {
-        const ipOsn = document.getElementById('ip_address_osn').value;
-        const ipRez = document.getElementById('ip_address_rez').value;
-        const ipRsu = document.getElementById('ip_address_rsu').value;
-
-        if (jsonData.data.Devices[0] && jsonData.data.Devices[0].DBConnectionStrings.length > 1) {
-            jsonData.data.Devices[0].DBConnectionStrings[0].Server = ipOsn;
-            jsonData.data.Devices[0].DBConnectionStrings[1].Server = increaseLastOctet(ipOsn);
-        }
-        if (jsonData.data.Devices[1] && jsonData.data.Devices[1].DBConnectionStrings.length > 1) {
-            jsonData.data.Devices[1].DBConnectionStrings[0].Server = ipRez;
-            jsonData.data.Devices[1].DBConnectionStrings[1].Server = increaseLastOctet(ipRez);
-        }
-        if (jsonData.data.Devices[2] && jsonData.data.Devices[2].DBConnectionStrings.length > 1) {
-            jsonData.data.Devices[2].DBConnectionStrings[0].Server = ipRsu;
-            jsonData.data.Devices[2].DBConnectionStrings[1].Server = increaseLastOctet(ipRsu);
-        }
-    }
-    
-    document.getElementById('saveButton').addEventListener('click', function() {
-        updateIPAddresses(); 
-        downloadUpdatedJSON();
-    });
-    
 
       const addDocument = document.querySelector('.configurator__item');
       addDocument.innerHTML = ''; 
@@ -104,6 +87,25 @@ function generatePage() {
   });
 }
 
+function updateIPAddresses() {
+  const ipOsn = document.getElementById('ip_address_osn').value;
+  const ipRez = document.getElementById('ip_address_rez').value;
+  const ipRsu = document.getElementById('ip_address_rsu').value;
+
+  if (jsonData.data.Devices[0] && jsonData.data.Devices[0].DBConnectionStrings.length > 1) {
+      jsonData.data.Devices[0].DBConnectionStrings[0].Server = ipOsn;
+      jsonData.data.Devices[0].DBConnectionStrings[1].Server = increaseLastOctet(ipOsn);
+  }
+  if (jsonData.data.Devices[1] && jsonData.data.Devices[1].DBConnectionStrings.length > 1) {
+      jsonData.data.Devices[1].DBConnectionStrings[0].Server = ipRez;
+      jsonData.data.Devices[1].DBConnectionStrings[1].Server = increaseLastOctet(ipRez);
+  }
+  if (jsonData.data.Devices[2] && jsonData.data.Devices[2].DBConnectionStrings.length > 1) {
+      jsonData.data.Devices[2].DBConnectionStrings[0].Server = ipRsu;
+      jsonData.data.Devices[2].DBConnectionStrings[1].Server = increaseLastOctet(ipRsu);
+  }
+}
+
 function generateTemplateDocsHTML(templateDocs, parentName) {
   let templateDocsHTML = '';
   if (Array.isArray(templateDocs)) {
@@ -127,12 +129,14 @@ function generateTemplateDocsHTML(templateDocs, parentName) {
 }
 
 function updateMultipleDevices() {
-  updateDevice(jsonData.data.Devices[0]);
-  if (jsonData.data.Devices[1]) {
-      copyDeviceState(0, 1);
-  }
-  if (document.getElementById('ivk_rsu_checkbox')?.checked && jsonData.data.Devices[2]) {
-      copyDeviceState(0, 2);
+  for (let i = 0; i < jsonData.data.Devices.length; i++) {
+    const device = jsonData.data.Devices[i];
+    updateDevice(device);
+
+    if (i > 0) {
+      const sourceDevice = jsonData.data.Devices[0];
+      copyDeviceState(sourceDevice, device);
+    }
   }
 }
 
@@ -162,14 +166,12 @@ function updateTemplateDocs(templateDocs, parentName) {
   });
 }
 
-function copyDeviceState(sourceIndex, targetIndex) {
-  let sourceDevice = jsonData.data.Devices[sourceIndex];
-  let targetDevice = jsonData.data.Devices[targetIndex];
+function copyDeviceState(sourceDevice, targetDevice) {
   targetDevice.Docs.forEach((doc, docIndex) => {
-      doc.Use = sourceDevice.Docs[docIndex].Use;
-      if (doc.TemplateDocs) {
-          copyTemplateDocsState(sourceDevice.Docs[docIndex].TemplateDocs, doc.TemplateDocs);
-      }
+    doc.Use = sourceDevice.Docs[docIndex].Use;
+    if (doc.TemplateDocs) {
+      copyTemplateDocsState(sourceDevice.Docs[docIndex].TemplateDocs, doc.TemplateDocs);
+    }
   });
 }
 
@@ -193,3 +195,4 @@ function downloadUpdatedJSON() {
   downloadAnchorNode.remove();
 }
 
+addSaveButtonEventListener();
