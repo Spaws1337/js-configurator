@@ -85,6 +85,7 @@ h3 {
     height: 32px;
     background-color: #10141A;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .configurator__header--rsu {
