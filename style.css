@@ -64,6 +64,26 @@ h3 {
     color: #10141A;
 }
 
+.file__uploaded {
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto 24px;
+    width: 240px;
+    height: 40px;
+    background-color: #008a00;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+.file__uploaded h2 {
+    padding: 10px;
+    margin: 0;
+}
+
 .title {
     margin: 0 auto 12px;
     text-align: center;

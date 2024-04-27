@@ -30,16 +30,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                jsonData.data = JSON.parse(reader.result);
-                generatePage();
-            };
-            reader.readAsText(file);
-        }
-    });
+      const file = event.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = () => {
+              jsonData.data = JSON.parse(reader.result);
+              generatePage();
+              document.getElementById('file__uploaded').style.display = 'block'; // Показать окошко
+          };
+          reader.onerror = () => {
+              document.getElementById('file__uploaded').style.display = 'none'; // Скрыть окошко
+          };
+          reader.readAsText(file);
+      } else {
+          document.getElementById('file__uploaded').style.display = 'none'; // Скрыть окошко
+      }
+  });
 });
 
 function increaseLastOctet(ip) {
