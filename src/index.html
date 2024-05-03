@@ -30,21 +30,39 @@
         </div>
 
         <div>
-            <label for="ip_address_osn" class="roboto-medium">Введите IP-адрес основного ИВК:</label>
+            <label for="ip_address_osn" class="roboto-medium">Введите основной IP-адрес ИВК 1:</label>
             <input class="roboto-medium" type="text" id="ip_address_osn" name="ip_address_osn" required
-                   pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+                pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
             <span class="validity"></span>
         </div>
         <div>
-            <label for="ip_address_rez" class="roboto-medium">Введите IP-адрес резервного ИВК:</label>
+            <label for="ip_address_osn_2" class="roboto-medium">Введите резервный IP-адрес ИВК 2:</label>
+            <input class="roboto-medium" type="text" id="ip_address_osn_2" name="ip_address_osn_2" required
+                pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="ip_address_rez" class="roboto-medium">Введите основной IP-адрес ИВК 2:</label>
             <input class="roboto-medium" type="text" id="ip_address_rez" name="ip_address_rez" required
-                   pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+                pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
             <span class="validity"></span>
         </div>
         <div>
-            <label for="ip_address_rsu" id="ip_address_rsu_text" class="roboto-medium">Введите IP-адрес ИВК РСУ:</label>
+            <label for="ip_address_rez_2" class="roboto-medium">Введите резервный IP-адрес ИВК 2:</label>
+            <input class="roboto-medium" type="text" id="ip_address_rez_2" name="ip_address_rez_2" required
+                pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="ip_address_rsu" id="ip_address_rsu_2_text" class="roboto-medium">Введите основной IP-адрес ИВК РСУ:</label>
             <input class="roboto-medium" type="text" id="ip_address_rsu" name="ip_address_rsu" required
-                   pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+                pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="ip_address_rsu_2" id="ip_address_rsu_2_text" class="roboto-medium">Введите резервный IP-адрес ИВК РСУ:</label>
+            <input class="roboto-medium" type="text" id="ip_address_rsu_2" name="ip_address_rsu_2" required
+                pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" />
             <span class="validity"></span>
         </div>
     </form> 
@@ -54,6 +72,15 @@
                 <input type="checkbox" id="ivk_rsu_checkbox" name="ivk_rsu_checkbox" />
                 <label for="ivk_rsu_checkbox">
                     <h2 class="roboto-medium">Наличие РСУ</h2>
+                    <span class="checkbox-icon"></span>
+                </label>
+            </div>
+        </div>
+        <div class="configurator__header--operator">
+            <div class="custom-checkbox">
+                <input type="checkbox" id="ivk_operator_checkbox" name="ivk_operator_checkbox" />
+                <label for="ivk_operator_checkbox">
+                    <h2 class="roboto-medium">Разрешить оператору редактировать отчеты</h2>
                     <span class="checkbox-icon"></span>
                 </label>
             </div>
@@ -67,12 +94,8 @@
                 </label>
             </div>
         </div>
-
         <div class="configurator__item roboto-regular">
-            
         </div>
-
-
 
     <div class="configurator__button">
         <button id="saveButton" class="roboto-medium">Сохранить</button>

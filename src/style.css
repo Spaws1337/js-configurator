@@ -108,7 +108,7 @@ h3 {
     margin-bottom: 20px;
 }
 
-.configurator__header--rsu {
+.configurator__header--rsu, .configurator__header--operator {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,16 +1,19 @@
 const fileInput = document.getElementById('fileInput');
 const jsonData = { data: null };
-const saveButton = document.getElementById('saveButton');
+// const saveButton = document.getElementById('saveButton');
 const rsuCheckbox = document.getElementById('ivk_rsu_checkbox');
 const rsuInputContainer = document.getElementById('ip_address_rsu').parentNode;
+const rsuInputContainer_2 = document.getElementById('ip_address_rsu_2').parentNode;
 import translit from './translit.js';
 
 function toggleRsuInput() {
     rsuInputContainer.style.display = rsuCheckbox.checked ? 'block' : 'none';
+    rsuInputContainer_2.style.display = rsuCheckbox.checked ? 'block' : 'none';
 }
 
 function addSaveButtonEventListener() {
   document.getElementById('saveButton').addEventListener('click', function() {
+      giveOperatorRule();
       updateIPAddresses();
       downloadUpdatedJSON();
   });
@@ -48,23 +51,26 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-function increaseLastOctet(ip) {
-  let parts = ip.split('.');
-  let lastOctet = parseInt(parts[3]) + 100;
-  parts[3] = lastOctet.toString();
-  return parts.join('.');
-}
+// function increaseLastOctet(ip) {
+//   let parts = ip.split('.');
+//   let lastOctet = parseInt(parts[3]) + 100;
+//   parts[3] = lastOctet.toString();
+//   return parts.join('.');
+// }
 
 function generatePage() {
   const devices = jsonData.data.Devices;
   devices.forEach((device, deviceIndex) => {
       if (deviceIndex === 0) {
           document.getElementById('ip_address_osn').value = device.DBConnectionStrings[0].Server;
+          document.getElementById('ip_address_osn_2').value = device.DBConnectionStrings[1].Server;
       } else if (deviceIndex === 1) {
           document.getElementById('ip_address_rez').value = device.DBConnectionStrings[0].Server;
+          document.getElementById('ip_address_rez_2').value = device.DBConnectionStrings[1].Server;
       } else if (deviceIndex === 2 && device.DBConnectionStrings.length > 0) {
           document.getElementById('ivk_rsu_checkbox').checked = true;
           document.getElementById('ip_address_rsu').value = device.DBConnectionStrings[0].Server;
+          document.getElementById('ip_address_rsu_2').value = device.DBConnectionStrings[1].Server;
           toggleRsuInput(); 
       }
 
@@ -97,19 +103,33 @@ function updateIPAddresses() {
   const ipOsn = document.getElementById('ip_address_osn').value;
   const ipRez = document.getElementById('ip_address_rez').value;
   const ipRsu = document.getElementById('ip_address_rsu').value;
+  const ipOsn_2 = document.getElementById('ip_address_osn_2').value;
+  const ipRez_2 = document.getElementById('ip_address_rez_2').value;
+  const ipRsu_2 = document.getElementById('ip_address_rsu_2').value;
 
   if (jsonData.data.Devices[0] && jsonData.data.Devices[0].DBConnectionStrings.length > 1) {
       jsonData.data.Devices[0].DBConnectionStrings[0].Server = ipOsn;
-      jsonData.data.Devices[0].DBConnectionStrings[1].Server = increaseLastOctet(ipOsn);
+      jsonData.data.Devices[0].DBConnectionStrings[1].Server = ipOsn_2;
+    //   jsonData.data.Devices[0].DBConnectionStrings[1].Server = increaseLastOctet(ipOsn);
   }
   if (jsonData.data.Devices[1] && jsonData.data.Devices[1].DBConnectionStrings.length > 1) {
       jsonData.data.Devices[1].DBConnectionStrings[0].Server = ipRez;
-      jsonData.data.Devices[1].DBConnectionStrings[1].Server = increaseLastOctet(ipRez);
+      jsonData.data.Devices[1].DBConnectionStrings[1].Server = ipRez_2;
+    //   jsonData.data.Devices[1].DBConnectionStrings[1].Server = increaseLastOctet(ipRez);
   }
   if (jsonData.data.Devices[2] && jsonData.data.Devices[2].DBConnectionStrings.length > 1) {
       jsonData.data.Devices[2].DBConnectionStrings[0].Server = ipRsu;
-      jsonData.data.Devices[2].DBConnectionStrings[1].Server = increaseLastOctet(ipRsu);
+      jsonData.data.Devices[2].DBConnectionStrings[1].Server = ipRsu_2;
+    //   jsonData.data.Devices[2].DBConnectionStrings[1].Server = increaseLastOctet(ipRsu);
   }
+}
+
+function giveOperatorRule(){
+    const operatorRule = document.getElementById('ivk_operator_checkbox').checked
+
+    if (jsonData.data.UseSecurityFeatures !==null){
+        jsonData.data.UseSecurityFeatures = !operatorRule
+    }
 }
 
 function generateTemplateDocsHTML(templateDocs, parentName) {
@@ -202,3 +222,4 @@ function downloadUpdatedJSON() {
 }
 
 addSaveButtonEventListener();
+
